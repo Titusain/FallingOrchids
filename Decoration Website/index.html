@@ -7,6 +7,9 @@
   <title>Falling Orchids – Moments Made Great</title>
   <meta name="description"
     content="Falling Orchids – Premium decoration services for weddings, birthdays, and celebrations. Transforming spaces into magical experiences." />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
 
   <!-- Google Fonts -->
   <link
@@ -2182,9 +2185,34 @@
       }
     }
   </style>
+
+  <!-- Apply saved theme before paint to prevent flash -->
+  <script>
+    (function () {
+      // Clear legacy storage key from old sessions that might have saved false
+      try {
+        localStorage.removeItem('fallingOrchids-darkMode');
+      } catch (e) {}
+
+      var saved = null;
+      try {
+        saved = localStorage.getItem('fallingOrchids_theme');
+      } catch (e) {}
+
+      if (saved === 'light') {
+        // User explicitly chose light mode — remove dark-mode from body once ready
+        document.addEventListener('DOMContentLoaded', function () {
+          document.body.classList.remove('dark-mode');
+        });
+      } else {
+        // Dark mode (default) — set html background to prevent white flash
+        document.documentElement.style.background = '#0f0c29';
+      }
+    })();
+  </script>
 </head>
 
-<body>
+<body class="dark-mode">
 
   <!-- Navbar -->
   <nav>
@@ -2242,12 +2270,12 @@
         <div class="theme-toggle-wrapper">
           <i class="fas fa-sun"></i>
           <label class="theme-switch">
-            <input type="checkbox" id="theme-toggle">
+            <input type="checkbox" id="theme-toggle" checked>
             <span class="theme-slider"></span>
           </label>
           <i class="fas fa-moon"></i>
         </div>
-        <p class="theme-mode-label" id="theme-mode-label">Light Mode</p>
+        <p class="theme-mode-label" id="theme-mode-label">Dark Mode</p>
       </div>
     </div>
   </div>
@@ -3004,23 +3032,30 @@ ${name} (${userEmail})`;
 
       // Dark / Light mode toggle
       function setDarkMode(isDark) {
+        // Clear the temporary html background set by the head script
+        document.documentElement.style.background = '';
         if (isDark) {
           document.body.classList.add('dark-mode');
           themeToggle.checked = true;
           themeModeLabel.textContent = 'Dark Mode';
+          try { localStorage.setItem('fallingOrchids_theme', 'dark'); } catch (e) {}
         } else {
           document.body.classList.remove('dark-mode');
           themeToggle.checked = false;
           themeModeLabel.textContent = 'Light Mode';
+          try { localStorage.setItem('fallingOrchids_theme', 'light'); } catch (e) {}
         }
-        localStorage.setItem('fallingOrchids-darkMode', isDark ? 'true' : 'false');
       }
 
       themeToggle.addEventListener('change', () => setDarkMode(themeToggle.checked));
 
       // Restore saved preference — default to dark mode
-      const savedTheme = localStorage.getItem('fallingOrchids-darkMode');
-      if (savedTheme === 'false') {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('fallingOrchids_theme');
+      } catch (e) {}
+
+      if (savedTheme === 'light') {
         setDarkMode(false);
       } else {
         setDarkMode(true);
