@@ -1,0 +1,3040 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Falling Orchids – Moments Made Great</title>
+  <meta name="description"
+    content="Falling Orchids – Premium decoration services for weddings, birthdays, and celebrations. Transforming spaces into magical experiences." />
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    /* ══════════════════════════════════════════════════════════════
+       GENERAL RESET
+       ══════════════════════════════════════════════════════════════ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #fff5f7 0%, #fce4ec 30%, #f3e5f5 70%, #ede7f6 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       NAVBAR
+       ══════════════════════════════════════════════════════════════ */
+    @keyframes navGradient {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes linkShimmer {
+      0% {
+        background-position: -100% 0;
+      }
+
+      100% {
+        background-position: 100% 0;
+      }
+    }
+
+    nav {
+      position: sticky;
+      top: 10px;
+      width: calc(100% - 32px);
+      margin: 0 16px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 2rem;
+      z-index: 1000;
+      border-bottom: 2px solid transparent;
+      background-image: linear-gradient(to right, #e75480, #ff9a9e, #833ab4, #e75480);
+      background-size: 300% 300%;
+      animation: navGradient 15s ease infinite;
+      border-radius: 50px;
+      box-shadow: 0 4px 24px rgba(231, 84, 128, 0.28);
+    }
+
+    nav img {
+      height: 50px;
+      margin-right: 12px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    }
+
+    nav .logo {
+      display: flex;
+      align-items: center;
+      font-family: 'Great Vibes', cursive;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    nav .logo:hover {
+      transform: scale(1.05);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    nav ul li a {
+      font-family: 'Playfair Display', serif;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      font-size: 1rem;
+      color: white;
+      position: relative;
+      padding: 0.3rem 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, #ffffff, #ff9a9e, #ffffff);
+      background-size: 200% 100%;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ffffff;
+    }
+
+    nav ul li a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+      animation: linkShimmer 1.5s infinite linear;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       HOME / HERO
+       ══════════════════════════════════════════════════════════════ */
+    #home {
+      position: relative;
+      height: calc(100vh - 80px);
+      margin: 20px 16px 0;
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding-bottom: 60px;
+      box-shadow: 0 8px 40px rgba(131, 58, 180, 0.18);
+    }
+
+    /* Carousel – pure cross-fade */
+    .carousel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.7s ease-in-out;
+      z-index: 1;
+      will-change: opacity;
+    }
+
+    .carousel img.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .carousel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 182, 193, 0.25) 100%);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* Dots */
+    .carousel-nav {
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 5;
+    }
+
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.55);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1.5px solid rgba(255, 255, 255, 0.7);
+    }
+
+    .carousel-dot.active {
+      background: #e75480;
+      border-color: #e75480;
+      transform: scale(1.25);
+    }
+
+    /* Arrow wrapper */
+    .carousel-arrows {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    /* Transparent arrow buttons */
+    .carousel-arrow {
+      pointer-events: auto;
+      width: 52px;
+      height: 52px;
+      border-radius: 0;
+      background: none;
+      border: none;
+      backdrop-filter: none;
+      color: white;
+      font-size: 2rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55), 0 0 4px rgba(0, 0, 0, 0.4);
+      opacity: 0.85;
+    }
+
+    .carousel-arrow:hover {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+
+    .carousel-arrow:active {
+      transform: scale(0.9);
+    }
+
+    /* Home text cloud banner */
+    .home-text h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      margin: 0;
+      background: linear-gradient(300deg, #e75480, #ff9a9e, #833ab4, #e75480);
+      background-size: 240% 240%;
+      animation: titleGradient 10s ease infinite;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    .home-text p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      font-style: italic;
+      color: #7b3f6e;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    @keyframes titleGradient {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes cloudFloat {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .home-text {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0;
+      padding: 1.4rem 2.8rem;
+      background: rgba(255, 255, 255, 0.48);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255, 255, 255, 0.72);
+      box-shadow: 0 8px 36px rgba(131, 58, 180, 0.13), 0 2px 8px rgba(231, 84, 128, 0.1);
+      border-radius: 100px;
+      animation: cloudFloat 5s ease-in-out infinite;
+      max-width: 760px;
+    }
+
+    .home-title {
+      flex-shrink: 0;
+    }
+
+    .home-divider {
+      width: 1.5px;
+      height: 60px;
+      background: rgba(231, 84, 128, 0.35);
+      margin: 0 2rem;
+      flex-shrink: 0;
+    }
+
+    .home-tagline {
+      text-align: left;
+      flex: 1;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       FLOATING ACTION BUTTONS (BOTTOM RIGHT)
+       ══════════════════════════════════════════════════════════════ */
+    .floating-actions {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 999;
+      align-items: flex-end;
+    }
+
+    .floating-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: white;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .floating-btn.book-btn {
+      background: linear-gradient(135deg, #e75480, #c850c0);
+      box-shadow: 0 4px 14px rgba(231, 84, 128, 0.4);
+    }
+
+    .floating-btn.book-btn:hover {
+      transform: scale(1.06) translateY(-2px);
+      box-shadow: 0 6px 22px rgba(231, 84, 128, 0.55);
+    }
+
+    .floating-btn.whatsapp-btn {
+      background: #25D366;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    }
+
+    .floating-btn.whatsapp-btn:hover {
+      transform: scale(1.06) translateY(-2px);
+      box-shadow: 0 6px 22px rgba(37, 211, 102, 0.5);
+    }
+
+    .floating-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTION HEADINGS
+       ══════════════════════════════════════════════════════════════ */
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+      contain: layout style;
+    }
+
+    #gallery,
+    #gallery-photos,
+    #testimonials,
+    #contact {
+      content-visibility: auto;
+      contain-intrinsic-size: 600px;
+    }
+
+    @keyframes headingShimmer {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    section h2 {
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-size: 2.3rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.4rem;
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(135deg, #c2185b 0%, #e75480 35%, #833ab4 70%, #c2185b 100%);
+      background-size: 250% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: headingShimmer 7s ease infinite;
+      transition: transform 0.3s ease;
+    }
+
+    section h2:hover {
+      transform: scale(1.02);
+    }
+
+    section h2::after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #e75480, #c850c0, transparent);
+      margin: 10px auto 0;
+      border-radius: 3px;
+      transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.4s ease;
+      box-shadow: 0 0 10px rgba(231, 84, 128, 0.5);
+    }
+
+    section h2:hover::after {
+      width: 130px;
+      box-shadow: 0 0 16px rgba(231, 84, 128, 0.8);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SCROLL REVEAL
+       ══════════════════════════════════════════════════════════════ */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .scroll-reveal.visible {
+      animation: fadeInUp 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    }
+
+    .scroll-reveal.visible:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    .scroll-reveal.visible:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    .scroll-reveal.visible:nth-child(4) {
+      animation-delay: 0.3s;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       WAVE DIVIDER
+       ══════════════════════════════════════════════════════════════ */
+    .wave-divider {
+      position: relative;
+      margin-top: -2px;
+      line-height: 0;
+      overflow: hidden;
+    }
+
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+      height: 70px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       ABOUT – HORIZONTAL CARDS
+       ══════════════════════════════════════════════════════════════ */
+    .about-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      max-width: 700px;
+      margin: 2rem auto 0;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: row;
+      border-radius: 28px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(231, 84, 128, 0.2);
+      box-shadow: 0 6px 28px rgba(131, 58, 180, 0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      min-height: 180px;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(231, 84, 128, 0.2);
+    }
+
+    .card-img {
+      width: 35%;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 0;
+    }
+
+    .card-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, rgba(255, 255, 255, 0.25));
+    }
+
+    .card-info {
+      flex: 1;
+      padding: 1.6rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+
+    .card-info h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #c2185b;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-info .card-role {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #e75480;
+      margin-bottom: 0.7rem;
+    }
+
+    .card-info p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.93rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SIMILAR PRODUCTS / PACKAGES GRID
+       ══════════════════════════════════════════════════════════════ */
+    .gallery-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 1140px;
+      margin: 0 auto;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1.5px solid rgba(231, 84, 128, 0.2);
+      box-shadow: 0 8px 26px rgba(131, 58, 180, 0.1);
+      transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.35s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 36px rgba(231, 84, 128, 0.25);
+    }
+
+    .product-card>img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .product-card:hover>img {
+      transform: scale(1.05);
+    }
+
+    .favorite-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e75480;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s, background 0.2s;
+      z-index: 2;
+    }
+
+    .favorite-btn:hover {
+      transform: scale(1.15);
+      background: #fff;
+    }
+
+    .product-info {
+      padding: 1.1rem 1.2rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      flex: 1;
+      text-align: left;
+    }
+
+    .product-info h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #2c1a32;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .product-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 4px;
+    }
+
+    .rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #e75480;
+      background: rgba(231, 84, 128, 0.1);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .rating i {
+      color: #f5a623;
+      font-size: 0.82rem;
+    }
+
+    .product-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #888;
+    }
+
+    @media (max-width: 992px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       GALLERY – PHOTO MOSAIC (2 per row, EQUAL sizes)
+       ══════════════════════════════════════════════════════════════ */
+    .gallery-mosaic {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      max-width: 860px;
+      margin: 2rem auto 0;
+      padding: 0 1rem;
+    }
+
+    .gallery-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(231, 84, 128, 0.35);
+      box-shadow: 0 4px 14px rgba(131, 58, 180, 0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      aspect-ratio: 4 / 3;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 8px 24px rgba(231, 84, 128, 0.28);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.06);
+    }
+
+    /* Gallery toggle (View More / View Less) */
+    .gallery-extra {
+      display: none;
+    }
+
+    .gallery-extra.show {
+      display: grid;
+    }
+
+    .gallery-toggle-btn {
+      display: block;
+      margin: 1.5rem auto;
+      padding: 0.8rem 2rem;
+      cursor: pointer;
+      background: linear-gradient(90deg, #e75480, #c850c0);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 18px rgba(231, 84, 128, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .gallery-toggle-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(231, 84, 128, 0.4);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       LIGHTBOX (FULL VIEWPORT COVERAGE)
+       ══════════════════════════════════════════════════════════════ */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 999999;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-content {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 16px;
+      object-fit: contain;
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.12);
+      transform: scale(0.96);
+      transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    .lightbox.active .lightbox-content {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 24px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: all 0.25s ease;
+      z-index: 1000000;
+    }
+
+    .lightbox-close:hover {
+      background: #e75480;
+      border-color: #e75480;
+      transform: rotate(90deg) scale(1.1);
+      color: white;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       TESTIMONIALS – CAROUSEL
+       ══════════════════════════════════════════════════════════════ */
+    .testimonials-carousel {
+      position: relative;
+      max-width: 800px;
+      margin: 2rem auto 0;
+      overflow: hidden;
+    }
+
+    .testimonials-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    .testimonial {
+      min-width: 100%;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+
+    .testimonial-inner {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      padding: 2.5rem 2.5rem 2rem;
+      border-radius: 24px;
+      border: 1.5px solid rgba(231, 84, 128, 0.2);
+      box-shadow: 0 8px 32px rgba(131, 58, 180, 0.1);
+      position: relative;
+      text-align: center;
+    }
+
+    .testimonial-inner::before {
+      content: '\201C';
+      position: absolute;
+      top: -10px;
+      left: 24px;
+      font-size: 5rem;
+      font-family: 'Playfair Display', serif;
+      color: rgba(231, 84, 128, 0.12);
+      line-height: 1;
+    }
+
+    .testimonial-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e75480, #c850c0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.5rem;
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(231, 84, 128, 0.3);
+    }
+
+    .testimonial-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+
+    .testimonial-author {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      color: #c2185b;
+      font-size: 1rem;
+    }
+
+    .testimonial-role {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      color: #999;
+      margin-top: 2px;
+    }
+
+    .stars {
+      color: #f5a623;
+      margin: 0.8rem 0;
+      font-size: 1rem;
+      letter-spacing: 3px;
+    }
+
+    .testimonials-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1.5rem;
+    }
+
+    .testimonials-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(231, 84, 128, 0.25);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .testimonials-dot.active {
+      background: #e75480;
+      transform: scale(1.3);
+    }
+
+    .testimonials-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1.5px solid rgba(231, 84, 128, 0.25);
+      color: #e75480;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 5;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .testimonials-arrow:hover {
+      background: #e75480;
+      color: white;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .testimonials-arrow.prev {
+      left: -8px;
+    }
+
+    .testimonials-arrow.next {
+      right: -8px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       CONTACT SECTION – SPLIT LAYOUT
+       ══════════════════════════════════════════════════════════════ */
+    #contact {
+      background: transparent;
+      position: relative;
+    }
+
+    .contact-wrapper {
+      max-width: 920px;
+      margin: 2rem auto 0;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 24px;
+      border: 1.5px solid rgba(231, 84, 128, 0.2);
+      box-shadow: 0 8px 40px rgba(131, 58, 180, 0.12), 0 2px 8px rgba(231, 84, 128, 0.08);
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .contact-info {
+      flex: 0 0 38%;
+      background: linear-gradient(135deg, #e75480, #c850c0, #833ab4);
+      padding: 2.5rem 2rem;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-info h3 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.95;
+    }
+
+    .contact-info-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 1.4rem;
+    }
+
+    .contact-detail-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-detail-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .contact-detail-text strong {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.75;
+      margin-bottom: 2px;
+    }
+
+    .contact-form-side {
+      flex: 1;
+      padding: 2.5rem 2.5rem 2rem;
+      text-align: left;
+    }
+
+    .contact-form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #c2185b;
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-subtitle {
+      font-family: 'DM Sans', sans-serif;
+      color: #888;
+      font-size: 0.88rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      font-family: 'DM Sans', sans-serif;
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #b0427a;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid rgba(231, 84, 128, 0.2);
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      color: #333;
+      background: rgba(255, 255, 255, 0.9);
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      -webkit-appearance: none;
+    }
+
+    .form-group select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23e75480' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: #e75480;
+      box-shadow: 0 0 0 3px rgba(231, 84, 128, 0.1);
+      transform: translateY(-1px);
+      background: #fff;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    @keyframes shimmerBtn {
+      0% {
+        background-position: -200% center;
+      }
+
+      100% {
+        background-position: 200% center;
+      }
+    }
+
+    .contact-submit {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      background: linear-gradient(90deg, #e75480, #c850c0, #e75480);
+      background-size: 200% auto;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 18px rgba(231, 84, 128, 0.35);
+      margin-top: 0.5rem;
+    }
+
+    .contact-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(231, 84, 128, 0.45);
+      animation: shimmerBtn 1.5s linear infinite;
+    }
+
+    .contact-submit:active {
+      transform: translateY(0);
+    }
+
+    /* Success state */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .form-success.show {
+      display: block;
+      animation: fadeUp 0.5s ease;
+    }
+
+    .form-success-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e75480, #c850c0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.8rem;
+      color: white;
+    }
+
+    .form-success h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: #c2185b;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-success p {
+      font-family: 'DM Sans', sans-serif;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       MOBILE NAV DRAWER
+       ══════════════════════════════════════════════════════════════ */
+    .mobile-nav-toggle {
+      display: none;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1.5px solid rgba(255, 255, 255, 0.32);
+      border-radius: 10px;
+      width: 38px;
+      height: 38px;
+      cursor: pointer;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 8px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .mobile-nav-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      transform-origin: center;
+    }
+
+    .mobile-nav-toggle.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .mobile-nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .mobile-nav-toggle.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-nav-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1500;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.35s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .mobile-nav-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 280px;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(20px);
+      z-index: 1501;
+      transform: translateX(100%);
+      transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+      box-shadow: -4px 0 30px rgba(0, 0, 0, 0.12);
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
+
+    .mobile-nav-drawer.active {
+      transform: translateX(0);
+    }
+
+    .mobile-nav-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem;
+      border-bottom: 1.5px solid rgba(231, 84, 128, 0.15);
+    }
+
+    .mobile-nav-header .logo-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.5rem;
+      color: #c2185b;
+    }
+
+    .mobile-nav-close {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: #999;
+      cursor: pointer;
+      transition: color 0.25s, transform 0.3s;
+    }
+
+    .mobile-nav-close:hover {
+      color: #e75480;
+      transform: rotate(90deg);
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      padding: 1.5rem;
+      flex: 1;
+    }
+
+    .mobile-nav-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .mobile-nav-links li a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #555;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-nav-links li a:hover,
+    .mobile-nav-links li a.active {
+      background: rgba(231, 84, 128, 0.08);
+      color: #e75480;
+      transform: translateX(4px);
+    }
+
+    .mobile-nav-links li a i {
+      width: 20px;
+      text-align: center;
+      color: #e75480;
+      font-size: 0.9rem;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SOCIAL ICONS (shared by contact + footer)
+       ══════════════════════════════════════════════════════════════ */
+    .socials {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .socials a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Contact section icons: pink-outlined style */
+    .contact-socials a {
+      background: rgba(231, 84, 128, 0.08);
+      color: #e75480;
+      border: 1.5px solid rgba(231, 84, 128, 0.3);
+    }
+
+    .contact-socials a:hover {
+      background: #e75480;
+      color: white;
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 4px 16px rgba(231, 84, 128, 0.35);
+    }
+
+    /* Footer icons: white style */
+    .footer-socials a {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .footer-socials a:hover {
+      background: white;
+      color: #e75480;
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════════════════════════ */
+    footer {
+      background: linear-gradient(135deg, #e75480, #c850c0);
+      padding: 2.5rem 2rem 1.5rem;
+      text-align: center;
+      color: #fff;
+      margin-top: 0;
+    }
+
+    footer .footer-brand {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.95;
+    }
+
+    footer .footer-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      opacity: 0.8;
+      margin-bottom: 1.2rem;
+    }
+
+    footer .footer-socials {
+      margin-bottom: 1.2rem;
+    }
+
+    footer .footer-copy {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 0.5rem;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       RESPONSIVE
+       ══════════════════════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+
+      .mobile-nav-toggle {
+        display: flex;
+      }
+
+      nav {
+        padding: 0.5rem 1.2rem;
+      }
+
+      #home {
+        height: 70vh;
+        margin: 10px 8px 0;
+      }
+
+      .home-text {
+        flex-direction: column;
+        border-radius: 24px;
+        padding: 1.2rem 1.6rem;
+        max-width: 90%;
+      }
+
+      .home-text h1 {
+        font-size: 2.5rem;
+        white-space: normal;
+      }
+
+      .home-divider {
+        width: 60px;
+        height: 1.5px;
+        margin: 0.8rem 0;
+      }
+
+      .home-tagline {
+        text-align: center;
+      }
+
+      .floating-actions {
+        bottom: 14px;
+        right: 14px;
+        gap: 8px;
+      }
+
+      .floating-btn {
+        padding: 10px 16px;
+        font-size: 0.88rem;
+      }
+
+      .card {
+        flex-direction: column;
+      }
+
+      .card-img {
+        width: 100%;
+        height: 200px;
+      }
+
+      .gallery-mosaic {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .contact-wrapper {
+        flex-direction: column;
+      }
+
+      .contact-info {
+        flex: none;
+        padding: 2rem 1.5rem;
+      }
+
+      .contact-form-side {
+        padding: 1.8rem 1.5rem;
+      }
+
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .testimonials-arrow {
+        display: none;
+      }
+
+      .socials a {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       NAV-LEFT WRAPPER
+       ══════════════════════════════════════════════════════════════ */
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SETTINGS HAMBURGER BUTTON
+       ══════════════════════════════════════════════════════════════ */
+    .settings-toggle {
+      background: none;
+      border: none;
+      border-radius: 0;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 4px;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .settings-toggle:hover {
+      background: none;
+      transform: scale(1.1);
+      opacity: 0.85;
+    }
+
+    .settings-toggle span {
+      display: block;
+      width: 16px;
+      height: 1.5px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      transform-origin: center;
+    }
+
+    .settings-toggle.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .settings-toggle.active span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .settings-toggle.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SETTINGS PANEL (Slide-in Sidebar)
+       ══════════════════════════════════════════════════════════════ */
+    .settings-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1998;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.35s ease;
+      backdrop-filter: blur(3px);
+    }
+
+    .settings-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .settings-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 1999;
+      transform: translateX(-100%);
+      transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+      box-shadow: 4px 0 30px rgba(0, 0, 0, 0.12);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .settings-panel.active {
+      transform: translateX(0);
+    }
+
+    .settings-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 1.5rem 1.2rem;
+      border-bottom: 1.5px solid rgba(231, 84, 128, 0.15);
+    }
+
+    .settings-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #c2185b;
+      margin: 0;
+    }
+
+    .settings-close {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: #999;
+      cursor: pointer;
+      transition: color 0.25s, transform 0.3s;
+      line-height: 1;
+      padding: 4px;
+    }
+
+    .settings-close:hover {
+      color: #e75480;
+      transform: rotate(90deg);
+    }
+
+    .settings-content {
+      padding: 1.8rem 1.5rem;
+      flex: 1;
+    }
+
+    .settings-group {
+      margin-bottom: 2rem;
+    }
+
+    .settings-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #b0427a;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .theme-toggle-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: rgba(231, 84, 128, 0.05);
+      border-radius: 14px;
+      border: 1.5px solid rgba(231, 84, 128, 0.12);
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle-wrapper i {
+      font-size: 1.15rem;
+      transition: all 0.4s ease;
+    }
+
+    .theme-toggle-wrapper .fa-sun {
+      color: #f5a623;
+    }
+
+    .theme-toggle-wrapper .fa-moon {
+      color: #8b8bc7;
+    }
+
+    /* Toggle Switch */
+    .theme-switch {
+      position: relative;
+      width: 54px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+
+    .theme-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+
+    .theme-slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      border-radius: 28px;
+      transition: all 0.5s cubic-bezier(0.68, -0.15, 0.27, 1.15);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .theme-slider::before {
+      content: '';
+      position: absolute;
+      height: 22px;
+      width: 22px;
+      left: 3px;
+      bottom: 3px;
+      background: white;
+      border-radius: 50%;
+      transition: all 0.5s cubic-bezier(0.68, -0.15, 0.27, 1.15);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+    }
+
+    .theme-switch input:checked+.theme-slider {
+      background: linear-gradient(135deg, #2d1b69, #0f3443);
+    }
+
+    .theme-switch input:checked+.theme-slider::before {
+      transform: translateX(26px);
+      background: #1a1a2e;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35),
+        inset -3px -1px 0 0 #d4d4d4,
+        inset -5px 0 0 0 #aaa;
+    }
+
+    .theme-mode-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      color: #999;
+      text-align: center;
+      margin-top: 0.8rem;
+      transition: color 0.3s;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       DARK MODE OVERRIDES
+       ══════════════════════════════════════════════════════════════ */
+    body.dark-mode {
+      background: linear-gradient(135deg, #0f0c29 0%, #1a1a2e 50%, #16213e 100%);
+      background-attachment: fixed;
+      color: #e0e0e0;
+    }
+
+    body.dark-mode nav {
+      background: rgba(15, 12, 41, 0.92);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+    }
+
+    body.dark-mode nav ul li a {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    body.dark-mode #home {
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    body.dark-mode .carousel-overlay {
+      background: linear-gradient(135deg, rgba(15, 12, 41, 0.45) 0%, rgba(26, 26, 46, 0.25) 100%);
+    }
+
+    body.dark-mode .home-text {
+      background: rgba(15, 12, 41, 0.65);
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 8px 36px rgba(0, 0, 0, 0.35);
+    }
+
+    body.dark-mode .home-text p {
+      color: #c4a8d0;
+    }
+
+    body.dark-mode .home-divider {
+      background: rgba(231, 84, 128, 0.45);
+    }
+
+    body.dark-mode section h2 {
+      color: #f48fb1;
+    }
+
+    body.dark-mode section h2::after {
+      color: #f48fb1;
+    }
+
+    body.dark-mode .card {
+      background: rgba(26, 26, 46, 0.85);
+      border-color: rgba(231, 84, 128, 0.2);
+      box-shadow: 0 6px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    body.dark-mode .card-info h3 {
+      color: #f48fb1;
+    }
+
+    body.dark-mode .card-info .card-role {
+      color: #ff80ab;
+    }
+
+    body.dark-mode .card-info p {
+      color: #b0b0b0;
+    }
+
+    body.dark-mode .gallery-grid {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    body.dark-mode .product-card {
+      background: rgba(26, 26, 46, 0.88);
+      border-color: rgba(231, 84, 128, 0.25);
+      box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
+    }
+
+    body.dark-mode .product-card:hover {
+      background: rgba(34, 34, 62, 0.95);
+      border-color: rgba(231, 84, 128, 0.45);
+      box-shadow: 0 16px 36px rgba(231, 84, 128, 0.25);
+    }
+
+    body.dark-mode .product-info h3 {
+      color: #f1f5f9;
+    }
+
+    body.dark-mode .product-tag {
+      color: #cbd5e1;
+    }
+
+    body.dark-mode .favorite-btn {
+      background: rgba(15, 12, 41, 0.85);
+      color: #f48fb1;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    body.dark-mode .favorite-btn:hover {
+      background: #1a1a2e;
+      color: #ff80ab;
+    }
+
+    body.dark-mode .rating {
+      background: rgba(231, 84, 128, 0.2);
+      color: #f48fb1;
+    }
+
+    body.dark-mode .gallery-card {
+      border-color: rgba(231, 84, 128, 0.28);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    body.dark-mode #gallery-photos h2 {
+      color: #f48fb1;
+    }
+
+    /* Testimonials in Dark Mode */
+    body.dark-mode .testimonial-inner {
+      background: rgba(26, 26, 46, 0.85);
+      border-color: rgba(231, 84, 128, 0.25);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    body.dark-mode .testimonial-inner::before {
+      color: rgba(244, 143, 177, 0.12);
+    }
+
+    body.dark-mode .testimonial-text {
+      color: #e2e8f0;
+    }
+
+    body.dark-mode .testimonial-author {
+      color: #f48fb1;
+    }
+
+    body.dark-mode .testimonial-role {
+      color: #94a3b8;
+    }
+
+    body.dark-mode .testimonials-arrow {
+      background: rgba(26, 26, 46, 0.85);
+      border-color: rgba(231, 84, 128, 0.35);
+      color: #f48fb1;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    body.dark-mode .testimonials-arrow:hover {
+      background: #e75480;
+      color: white;
+    }
+
+    body.dark-mode .testimonials-dot {
+      background: rgba(244, 143, 177, 0.25);
+    }
+
+    body.dark-mode .testimonials-dot.active {
+      background: #f48fb1;
+    }
+
+    /* Contact in Dark Mode */
+    body.dark-mode .contact-wrapper {
+      background: rgba(26, 26, 46, 0.85);
+      border-color: rgba(231, 84, 128, 0.2);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    body.dark-mode .contact-form-title {
+      color: #f48fb1;
+    }
+
+    body.dark-mode .contact-subtitle {
+      color: #999;
+    }
+
+    body.dark-mode .form-group label {
+      color: #f48fb1;
+    }
+
+    body.dark-mode .form-group input,
+    body.dark-mode .form-group textarea {
+      background: rgba(15, 12, 41, 0.6);
+      border-color: rgba(231, 84, 128, 0.2);
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .form-group select {
+      background-color: rgba(15, 12, 41, 0.7);
+      color: #e0e0e0;
+      border-color: rgba(231, 84, 128, 0.2);
+    }
+
+    body.dark-mode .form-group select option {
+      background-color: #1a1a2e;
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .form-group input::placeholder,
+    body.dark-mode .form-group textarea::placeholder {
+      color: #666;
+    }
+
+    body.dark-mode .form-group input:focus,
+    body.dark-mode .form-group textarea:focus,
+    body.dark-mode .form-group select:focus {
+      background: rgba(15, 12, 41, 0.85);
+      border-color: #e75480;
+    }
+
+    body.dark-mode .contact-socials a {
+      background: rgba(231, 84, 128, 0.1);
+      border-color: rgba(231, 84, 128, 0.25);
+    }
+
+    /* Mobile Nav Drawer in Dark Mode */
+    body.dark-mode .mobile-nav-drawer {
+      background: rgba(15, 12, 41, 0.98);
+      box-shadow: -4px 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    body.dark-mode .mobile-nav-header {
+      border-color: rgba(231, 84, 128, 0.18);
+    }
+
+    body.dark-mode .mobile-nav-header .logo-text {
+      color: #f48fb1;
+    }
+
+    body.dark-mode .mobile-nav-links li a {
+      color: #d1d5db;
+    }
+
+    body.dark-mode .mobile-nav-links li a:hover,
+    body.dark-mode .mobile-nav-links li a.active {
+      background: rgba(231, 84, 128, 0.15);
+      color: #f48fb1;
+    }
+
+    body.dark-mode footer {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+    }
+
+    body.dark-mode .wave-divider svg path {
+      fill: #16213e;
+    }
+
+    body.dark-mode .settings-panel {
+      background: rgba(22, 20, 50, 0.97);
+      box-shadow: 4px 0 30px rgba(0, 0, 0, 0.4);
+    }
+
+    body.dark-mode .settings-header {
+      border-color: rgba(231, 84, 128, 0.18);
+    }
+
+    body.dark-mode .settings-header h3 {
+      color: #f48fb1;
+    }
+
+    body.dark-mode .settings-close {
+      color: #666;
+    }
+
+    body.dark-mode .settings-close:hover {
+      color: #f48fb1;
+    }
+
+    body.dark-mode .settings-label {
+      color: #f48fb1;
+    }
+
+    body.dark-mode .theme-toggle-wrapper {
+      background: rgba(231, 84, 128, 0.06);
+      border-color: rgba(231, 84, 128, 0.15);
+    }
+
+    body.dark-mode .theme-mode-label {
+      color: #777;
+    }
+
+    body.dark-mode .floating-btn {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+    }
+
+    body.dark-mode .scroll-reveal {
+      color: #e0e0e0;
+    }
+
+    body.dark-mode #about>p {
+      color: #b0b0b0;
+    }
+
+    @media (max-width: 768px) {
+      .settings-panel {
+        width: 280px;
+      }
+
+      .settings-toggle {
+        width: 34px;
+        height: 34px;
+      }
+
+      .settings-toggle span {
+        width: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-left">
+      <button class="settings-toggle" id="settings-toggle" aria-label="Open Settings">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="logo">
+        <img src="assets.png/logo.png" alt="Logo" style="border-radius: 50%;">
+        Falling Orchids
+      </div>
+    </div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Open Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div class="mobile-nav-header">
+      <span class="logo-text">Falling Orchids</span>
+      <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close Menu">&times;</button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#about"><i class="fas fa-users"></i> About</a></li>
+      <li><a href="#gallery"><i class="fas fa-images"></i> Gallery</a></li>
+      <li><a href="#testimonials"><i class="fas fa-star"></i> Testimonials</a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Settings Panel -->
+  <div class="settings-overlay" id="settings-overlay"></div>
+  <div class="settings-panel" id="settings-panel">
+    <div class="settings-header">
+      <h3>⚙ Settings</h3>
+      <button class="settings-close" id="settings-close" aria-label="Close Settings">&times;</button>
+    </div>
+    <div class="settings-content">
+      <div class="settings-group">
+        <span class="settings-label">Appearance</span>
+        <div class="theme-toggle-wrapper">
+          <i class="fas fa-sun"></i>
+          <label class="theme-switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="theme-slider"></span>
+          </label>
+          <i class="fas fa-moon"></i>
+        </div>
+        <p class="theme-mode-label" id="theme-mode-label">Light Mode</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Home -->
+  <section id="home">
+    <div class="carousel">
+      <img src="assets.png/1.jpg" class="active" alt="Decoration 1" fetchpriority="high" decoding="async">
+      <img src="assets.png/2.jpg" alt="Decoration 2" decoding="async">
+      <img src="assets.png/3.jpg" alt="Decoration 3" decoding="async">
+      <img src="assets.png/4.jpg" alt="Decoration 4" decoding="async">
+      <img src="assets.png/6.jpg" alt="Decoration 5" decoding="async">
+      <img src="assets.png/10.jpg" alt="Decoration 6" decoding="async">
+      <div class="carousel-overlay"></div>
+      <div class="carousel-arrows">
+        <button class="carousel-arrow prev" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-arrow next" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="carousel-nav"></div>
+    </div>
+    <div class="home-text">
+      <div class="home-title">
+        <h1>Falling Orchids</h1>
+      </div>
+      <div class="home-divider"></div>
+      <div class="home-tagline">
+        <p>Where every petal tells a story &mdash;<br>turning spaces into timeless memories.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave divider: hero → content -->
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C180,80 360,0 540,40 C720,80 900,0 1080,40 C1260,80 1380,20 1440,40 L1440,70 L0,70 Z"
+        fill="url(#waveGrad)" />
+      <defs>
+        <linearGradient id="waveGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#fce4ec" />
+          <stop offset="50%" stop-color="#f3e5f5" />
+          <stop offset="100%" stop-color="#fce4ec" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- Floating Action Buttons (Bottom-Right) -->
+  <div class="floating-actions">
+    <a href="#contact" class="floating-btn book-btn" title="Book Appointment">
+      <i class="fas fa-calendar-check"></i> Book Appointment
+    </a>
+    <a href="https://wa.me/918826059605" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp-btn"
+      title="Contact Us on WhatsApp">
+      <i class="fab fa-whatsapp"></i> Contact Us
+    </a>
+  </div>
+
+  <!-- About -->
+  <section id="about" class="scroll-reveal">
+    <h2>About the Creators</h2>
+    <p>We are a passionate team dedicated to transforming spaces into magical experiences.</p>
+    <div class="about-cards">
+      <div class="card">
+        <div class="card-img">
+          <img src="assets.png/sarabpro.jpeg" alt="Sarbjeet Singh" loading="lazy" decoding="async">
+        </div>
+        <div class="card-info">
+          <h3>Sarbjeet Singh</h3>
+          <div class="card-role">🌸 Decoration Lead</div>
+          <p>Expert in floral arrangements and theme-based decorations. Transforms every venue into a dreamy,
+            unforgettable experience.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img">
+          <img src="assets.png/chalpro.jpeg" alt="Chanchal Singh" loading="lazy" decoding="async">
+        </div>
+        <div class="card-info">
+          <h3>Chanchal Singh</h3>
+          <div class="card-role">✨ Ambiance Specialist</div>
+          <p>Specialist in lighting design and ambient styling. Brings the perfect mood and glow to every celebration.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery – Product Cards -->
+  <section id="gallery" class="scroll-reveal">
+    <div class="gallery-header">
+      <h2>Similar Products</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="product-card">
+        <div class="favorite-btn"><i class="fas fa-heart"></i></div>
+        <img src="assets.png/1.jpg" alt="Pastel Birthday Decoration" loading="lazy" decoding="async">
+        <div class="product-info">
+          <h3>Pastel And Rosegold Birthday</h3>
+          <div class="product-badge-row">
+            <span class="product-tag">✨ Theme Setup</span>
+            <div class="rating"><i class="fas fa-star"></i> <span>4.6</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="favorite-btn"><i class="fas fa-heart"></i></div>
+        <img src="assets.png/2.jpg" alt="White and Gold Birthday Setup" loading="lazy" decoding="async">
+        <div class="product-info">
+          <h3>White And Gold Bliss Floral Birthday</h3>
+          <div class="product-badge-row">
+            <span class="product-tag">🌸 Floral Elegance</span>
+            <div class="rating"><i class="fas fa-star"></i> <span>4.5</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="favorite-btn"><i class="fas fa-heart"></i></div>
+        <img src="assets.png/3.jpg" alt="Glitzy Silver Birthday" loading="lazy" decoding="async">
+        <div class="product-info">
+          <h3>Glitzy Silver and Black Birthday</h3>
+          <div class="product-badge-row">
+            <span class="product-tag">✨ Premium Glow</span>
+            <div class="rating"><i class="fas fa-star"></i> <span>4.4</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="favorite-btn"><i class="fas fa-heart"></i></div>
+        <img src="assets.png/4.jpg" alt="Romantic Rose Gold Setup" loading="lazy" decoding="async">
+        <div class="product-info">
+          <h3>Romantic Rose Gold Love</h3>
+          <div class="product-badge-row">
+            <span class="product-tag">💖 Romantic Theme</span>
+            <div class="rating"><i class="fas fa-star"></i> <span>4.4</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery – Photo Mosaic -->
+  <section id="gallery-photos" style="padding: 2rem 1rem;">
+    <h2>Our Work</h2>
+    <div class="gallery-mosaic">
+      <div class="gallery-card" data-img="assets.png/1.jpg"><img src="assets.png/1.jpg" alt="Decoration 1"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/2.jpg"><img src="assets.png/2.jpg" alt="Decoration 2"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/3.jpg"><img src="assets.png/3.jpg" alt="Decoration 3"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/4.jpg"><img src="assets.png/4.jpg" alt="Decoration 4"
+          loading="lazy" decoding="async"></div>
+    </div>
+
+    <div class="gallery-mosaic gallery-extra" id="gallery-extra" style="margin-top: 14px;">
+      <div class="gallery-card" data-img="assets.png/5.jpg"><img src="assets.png/5.jpg" alt="Decoration 5"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/6.jpg"><img src="assets.png/6.jpg" alt="Decoration 6"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/7.jpg"><img src="assets.png/7.jpg" alt="Decoration 7"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/9.jpg"><img src="assets.png/9.jpg" alt="Decoration 8"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/10.jpg"><img src="assets.png/10.jpg" alt="Decoration 9"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/11.jpg"><img src="assets.png/11.jpg" alt="Decoration 10"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/13.jpg"><img src="assets.png/13.jpg" alt="Decoration 11"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/14.jpg"><img src="assets.png/14.jpg" alt="Decoration 12"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/15.jpg"><img src="assets.png/15.jpg" alt="Decoration 13"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/16.jpg"><img src="assets.png/16.jpg" alt="Decoration 14"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/17.jpg"><img src="assets.png/17.jpg" alt="Decoration 15"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/18.jpg"><img src="assets.png/18.jpg" alt="Decoration 16"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/20.jpg"><img src="assets.png/20.jpg" alt="Decoration 17"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/21.jpg"><img src="assets.png/21.jpg" alt="Decoration 18"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/22.jpg"><img src="assets.png/22.jpg" alt="Decoration 19"
+          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets.png/23.jpg"><img src="assets.png/23.jpg" alt="Decoration 20"
+          loading="lazy" decoding="async"></div>
+    </div>
+
+    <button id="gallery-toggle" class="gallery-toggle-btn">View More ↓</button>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="scroll-reveal">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonials-carousel" id="testimonials-carousel">
+      <button class="testimonials-arrow prev" aria-label="Previous testimonial"><i
+          class="fas fa-chevron-left"></i></button>
+      <button class="testimonials-arrow next" aria-label="Next testimonial"><i
+          class="fas fa-chevron-right"></i></button>
+      <div class="testimonials-track" id="testimonials-track">
+        <div class="testimonial">
+          <div class="testimonial-inner">
+            <div class="testimonial-avatar">AS</div>
+            <p class="testimonial-text">"Absolutely stunning decorations! They turned our wedding venue into a magical
+              fairy tale. Every guest was in awe of the floral arrangements and lighting."</p>
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testimonial-author">Ananya Sharma</p>
+            <p class="testimonial-role">Wedding Celebration</p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-inner">
+            <div class="testimonial-avatar">RK</div>
+            <p class="testimonial-text">"Professional team, creative designs, and on-time delivery. Our anniversary
+              party was unforgettable thanks to Falling Orchids. Highly recommended!"</p>
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testimonial-author">Rahul Kapoor</p>
+            <p class="testimonial-role">Anniversary Party</p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-inner">
+            <div class="testimonial-avatar">PM</div>
+            <p class="testimonial-text">"My daughter's birthday was beyond what I imagined. The balloon arrangements and
+              colour theme were perfectly executed. Thank you for making her day special!"</p>
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+            <p class="testimonial-author">Priya Malhotra</p>
+            <p class="testimonial-role">Birthday Decoration</p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-inner">
+            <div class="testimonial-avatar">VG</div>
+            <p class="testimonial-text">"We hired Falling Orchids for our corporate event and they delivered beyond
+              expectations. The stage design and floral setup were top-notch and very elegant."</p>
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testimonial-author">Vikram Gupta</p>
+            <p class="testimonial-role">Corporate Event</p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-inner">
+            <div class="testimonial-avatar">NK</div>
+            <p class="testimonial-text">"The haldi ceremony decorations were so vibrant and beautiful! Falling Orchids
+              understood our vision perfectly and brought it to life with their creativity."</p>
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="testimonial-author">Neha Kumari</p>
+            <p class="testimonial-role">Haldi Ceremony</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonials-dots" id="testimonials-dots"></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="scroll-reveal">
+    <h2>Get in Touch</h2>
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <h3>Falling Orchids</h3>
+        <p class="contact-info-subtitle">Let's create something beautiful together. Reach out and let us bring your
+          vision to life.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
+          <div class="contact-detail-text">
+            <strong>Phone</strong>
+            <a href="tel:+918826059605" style="color: inherit; text-decoration: none;">+91 8826059605</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
+          <div class="contact-detail-text">
+            <strong>Email</strong>
+            <a href="mailto:fallingorchidsdecorators@gmail.com"
+              style="color: inherit; text-decoration: none; word-break: break-all;">fallingorchidsdecorators@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i class="fab fa-instagram"></i></div>
+          <div class="contact-detail-text">
+            <strong>Instagram</strong>
+            <a href="https://www.instagram.com/falling_orchid?igsi=NTFmZDd4aTg5Mnh5" target="_blank"
+              rel="noopener noreferrer" style="color: inherit; text-decoration: none;">@falling_orchid</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="contact-detail-text">
+            <strong>Location</strong>
+            Delhi NCR, India
+          </div>
+        </div>
+        <div class="socials contact-socials" style="margin-top: auto; justify-content: flex-start;">
+          <a href="https://www.instagram.com/falling_orchid?igsi=NTFmZDd4aTg5Mnh5" target="_blank"
+            rel="noopener noreferrer" title="Instagram" aria-label="Instagram"
+            style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);"><i
+              class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/918826059605" target="_blank" rel="noopener noreferrer" title="WhatsApp"
+            aria-label="WhatsApp"
+            style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);"><i
+              class="fab fa-whatsapp"></i></a>
+          <a href="mailto:fallingorchidsdecorators@gmail.com" title="Email" aria-label="Email"
+            style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);"><i
+              class="fas fa-envelope"></i></a>
+          <a href="tel:+918826059605" title="Call" aria-label="Call"
+            style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);"><i
+              class="fas fa-phone"></i></a>
+        </div>
+      </div>
+      <div class="contact-form-side">
+        <h3 class="contact-form-title">Send us a Message</h3>
+        <p class="contact-subtitle">Fill in the details and send a direct email from your email ID.</p>
+        <form id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-name">Your Name</label>
+              <input id="contact-name" name="name" type="text" placeholder="e.g. Priya Sharma" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Your Email ID</label>
+              <input id="contact-email" name="email" type="email" placeholder="e.g. priya@gmail.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-phone">Phone Number</label>
+              <input id="contact-phone" name="phone" type="tel" placeholder="+91 8826059605" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-event">Event Type</label>
+              <select id="contact-event" name="event_type" required>
+                <option value="" disabled selected>Select event type</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Anniversary">Anniversary</option>
+                <option value="Corporate Event">Corporate Event</option>
+                <option value="Haldi / Mehendi">Haldi / Mehendi</option>
+                <option value="Baby Shower">Baby Shower</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contact-date">Event Date</label>
+            <input id="contact-date" name="event_date" type="date" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-msg">Your Message / Vision</label>
+            <textarea id="contact-msg" name="message" rows="4"
+              placeholder="Tell us about your vision, venue, and budget…" required></textarea>
+          </div>
+          <button type="submit" class="contact-submit"><i class="fas fa-paper-plane"></i>&nbsp; Send Message via
+            Email</button>
+        </form>
+        <div class="form-success" id="form-success">
+          <div class="form-success-icon"><i class="fas fa-check"></i></div>
+          <h4>Message Ready & Email Opened!</h4>
+          <p>Your email client has been opened with your inquiry pre-filled to
+            <strong>fallingorchidsdecorators@gmail.com</strong>.
+          </p>
+          <p style="margin-top: 0.8rem; font-size: 0.82rem;">
+            Didn't open automatically? <a id="mailto-fallback-link" href="mailto:fallingorchidsdecorators@gmail.com"
+              style="color: #e75480; font-weight: 600; text-decoration: underline;">Click here to send direct mail</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-brand">Falling Orchids</div>
+    <div class="footer-tagline">Moments Made Great</div>
+    <div class="socials footer-socials">
+      <a href="https://www.instagram.com/falling_orchid?igsi=NTFmZDd4aTg5Mnh5" target="_blank" rel="noopener noreferrer"
+        title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/918826059605" target="_blank" rel="noopener noreferrer" title="WhatsApp"
+        aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:fallingorchidsdecorators@gmail.com" title="Email" aria-label="Email"><i
+          class="fas fa-envelope"></i></a>
+      <a href="tel:+918826059605" title="Call Us" aria-label="Call Us"><i class="fas fa-phone"></i></a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Falling Orchids. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Lightbox Modal (Full Viewport) -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close Lightbox">&times;</button>
+    <img class="lightbox-content" id="lightbox-img" alt="Enlarged Decoration Preview">
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       JAVASCRIPT
+       ══════════════════════════════════════════════════════════════ -->
+  <script>
+    // ── Carousel (crossfade) ─────────────────────────────────────
+    (function () {
+      const carousel = document.querySelector('.carousel');
+      if (!carousel) return;
+
+      const slides = Array.from(carousel.querySelectorAll('img'));
+      const dotsContainer = carousel.querySelector('.carousel-nav');
+      const prevBtn = carousel.querySelector('.prev');
+      const nextBtn = carousel.querySelector('.next');
+      let currentIndex = 0;
+      let interval;
+
+      // Build dots
+      slides.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.classList.add('carousel-dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+      });
+
+      const dots = Array.from(dotsContainer.querySelectorAll('.carousel-dot'));
+
+      function goToSlide(index) {
+        slides[currentIndex].classList.remove('active');
+        dots[currentIndex].classList.remove('active');
+        currentIndex = ((index % slides.length) + slides.length) % slides.length;
+        slides[currentIndex].classList.add('active');
+        dots[currentIndex].classList.add('active');
+      }
+
+      function nextSlide() { goToSlide(currentIndex + 1); }
+      function prevSlide() { goToSlide(currentIndex - 1); }
+
+      function resetInterval() {
+        clearInterval(interval);
+        interval = setInterval(nextSlide, 3000);
+      }
+
+      // Arrow buttons
+      if (nextBtn) nextBtn.addEventListener('click', e => { e.preventDefault(); nextSlide(); resetInterval(); });
+      if (prevBtn) prevBtn.addEventListener('click', e => { e.preventDefault(); prevSlide(); resetInterval(); });
+
+      // Keyboard
+      document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') { prevSlide(); resetInterval(); }
+        if (e.key === 'ArrowRight') { nextSlide(); resetInterval(); }
+      });
+
+      // Touch swipe
+      let touchStartX = 0;
+      carousel.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; clearInterval(interval); }, { passive: true });
+      carousel.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].screenX - touchStartX;
+        if (dx < -40) nextSlide();
+        if (dx > 40) prevSlide();
+        resetInterval();
+      }, { passive: true });
+
+      // Pause on hover
+      carousel.addEventListener('mouseenter', () => clearInterval(interval));
+      carousel.addEventListener('mouseleave', resetInterval);
+
+      // Kick off
+      slides.forEach(s => s.classList.remove('active'));
+      dots.forEach(d => d.classList.remove('active'));
+      slides[0].classList.add('active');
+      dots[0].classList.add('active');
+      currentIndex = 0;
+      resetInterval();
+    })();
+
+    // ── Gallery Lightbox ─────────────────────────────────────────
+    (function () {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxClose = document.getElementById('lightbox-close');
+      if (!lightbox || !lightboxImg) return;
+
+      function openLightbox(src) {
+        lightboxImg.src = src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.gallery-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const imgUrl = card.getAttribute('data-img') || card.querySelector('img')?.src;
+          if (imgUrl) openLightbox(imgUrl);
+        });
+      });
+
+      if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', e => {
+        if (e.target === lightbox || e.target === lightboxClose) {
+          closeLightbox();
+        }
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+      });
+    })();
+
+    // ── Smooth Scroll ────────────────────────────────────────────
+    document.querySelectorAll('nav ul li a, .mobile-nav-links a, .book-btn').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+          // Close mobile nav if open
+          const drawer = document.getElementById('mobile-nav-drawer');
+          if (drawer && drawer.classList.contains('active')) {
+            drawer.classList.remove('active');
+            document.getElementById('mobile-nav-overlay').classList.remove('active');
+            document.getElementById('mobile-nav-toggle').classList.remove('active');
+          }
+        }
+      });
+    });
+
+    // ── Scroll Reveal (IntersectionObserver) ─────────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
+
+    // ── Gallery Toggle ───────────────────────────────────────────
+    const galleryToggleBtn = document.getElementById('gallery-toggle');
+    const galleryExtra = document.getElementById('gallery-extra');
+    if (galleryToggleBtn && galleryExtra) {
+      galleryToggleBtn.addEventListener('click', () => {
+        galleryExtra.classList.toggle('show');
+        if (galleryExtra.classList.contains('show')) {
+          galleryToggleBtn.innerHTML = 'View Less &uarr;';
+        } else {
+          galleryToggleBtn.innerHTML = 'View More &darr;';
+          document.getElementById('gallery-photos').scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+
+    // ── Mobile Nav Drawer ─────────────────────────────────────────
+    (function () {
+      const toggle = document.getElementById('mobile-nav-toggle');
+      const drawer = document.getElementById('mobile-nav-drawer');
+      const overlay = document.getElementById('mobile-nav-overlay');
+      const closeBtn = document.getElementById('mobile-nav-close');
+      if (!toggle || !drawer) return;
+
+      function openDrawer() {
+        drawer.classList.add('active');
+        overlay.classList.add('active');
+        toggle.classList.add('active');
+      }
+
+      function closeDrawer() {
+        drawer.classList.remove('active');
+        overlay.classList.remove('active');
+        toggle.classList.remove('active');
+      }
+
+      toggle.addEventListener('click', () => {
+        drawer.classList.contains('active') ? closeDrawer() : openDrawer();
+      });
+
+      closeBtn.addEventListener('click', closeDrawer);
+      overlay.addEventListener('click', closeDrawer);
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && drawer.classList.contains('active')) closeDrawer();
+      });
+    })();
+
+    // ── Testimonials Carousel ─────────────────────────────────────
+    (function () {
+      const track = document.getElementById('testimonials-track');
+      const dotsContainer = document.getElementById('testimonials-dots');
+      const carousel = document.getElementById('testimonials-carousel');
+      if (!track || !dotsContainer) return;
+
+      const slides = track.querySelectorAll('.testimonial');
+      let current = 0;
+      let autoInterval;
+
+      // Build dots
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.classList.add('testimonials-dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      });
+
+      const dots = dotsContainer.querySelectorAll('.testimonials-dot');
+
+      function goTo(index) {
+        dots[current].classList.remove('active');
+        current = ((index % slides.length) + slides.length) % slides.length;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dots[current].classList.add('active');
+      }
+
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+
+      function resetAuto() {
+        clearInterval(autoInterval);
+        autoInterval = setInterval(next, 5000);
+      }
+
+      // Arrow buttons
+      const prevBtn = carousel.querySelector('.testimonials-arrow.prev');
+      const nextBtn = carousel.querySelector('.testimonials-arrow.next');
+      if (prevBtn) prevBtn.addEventListener('click', () => { prev(); resetAuto(); });
+      if (nextBtn) nextBtn.addEventListener('click', () => { next(); resetAuto(); });
+
+      // Touch swipe
+      let touchX = 0;
+      track.addEventListener('touchstart', e => { touchX = e.changedTouches[0].screenX; clearInterval(autoInterval); }, { passive: true });
+      track.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].screenX - touchX;
+        if (dx < -40) next();
+        if (dx > 40) prev();
+        resetAuto();
+      }, { passive: true });
+
+      resetAuto();
+    })();
+
+    // ── Contact Form (Direct User Email → fallingorchidsdecorators@gmail.com) ──
+    (function () {
+      const form = document.getElementById('contact-form');
+      const success = document.getElementById('form-success');
+      const mailtoFallback = document.getElementById('mailto-fallback-link');
+      if (!form) return;
+
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+
+        const name = document.getElementById('contact-name')?.value?.trim() || 'Client';
+        const userEmail = document.getElementById('contact-email')?.value?.trim() || '';
+        const phone = document.getElementById('contact-phone')?.value?.trim() || 'N/A';
+        const eventType = document.getElementById('contact-event')?.value || 'Decoration Inquiry';
+        const date = document.getElementById('contact-date')?.value || 'Not specified';
+        const message = document.getElementById('contact-msg')?.value?.trim() || '';
+
+        const toEmail = 'fallingorchidsdecorators@gmail.com';
+        const emailSubject = `New Decoration Inquiry: ${eventType} from ${name}`;
+        const emailBody =
+          `Hello Falling Orchids Team,
+
+I would like to inquire about your decoration services.
+
+── Client Details ──
+• Name: ${name}
+• Email: ${userEmail}
+• Phone: ${phone}
+• Event Type: ${eventType}
+• Event Date: ${date}
+
+── Message / Vision ──
+${message}
+
+Best regards,
+${name} (${userEmail})`;
+
+        const mailtoUrl = `mailto:${toEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+
+        // Also backup forward via API in background
+        try {
+          fetch('https://formsubmit.co/ajax/fallingorchidsdecorators@gmail.com', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              name: name,
+              email: userEmail,
+              phone: phone,
+              event_type: eventType,
+              event_date: date,
+              message: message,
+              _replyto: userEmail,
+              _subject: emailSubject,
+              _captcha: 'false',
+              _template: 'table'
+            })
+          }).catch(() => { });
+        } catch (_) { }
+
+        // Trigger user's mail client directly
+        if (mailtoFallback) {
+          mailtoFallback.href = mailtoUrl;
+        }
+        window.location.href = mailtoUrl;
+
+        // All clear - reset and clear all form inputs immediately
+        form.reset();
+        form.style.display = 'none';
+        if (success) success.classList.add('show');
+
+        setTimeout(() => {
+          form.style.display = '';
+          if (success) success.classList.remove('show');
+        }, 6000);
+      });
+    })();
+
+    // ── Settings Panel & Dark Mode ──────────────────────────────
+    (function () {
+      const settingsToggle = document.getElementById('settings-toggle');
+      const settingsPanel = document.getElementById('settings-panel');
+      const settingsOverlay = document.getElementById('settings-overlay');
+      const settingsClose = document.getElementById('settings-close');
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeModeLabel = document.getElementById('theme-mode-label');
+
+      function openSettings() {
+        settingsPanel.classList.add('active');
+        settingsOverlay.classList.add('active');
+        settingsToggle.classList.add('active');
+      }
+
+      function closeSettings() {
+        settingsPanel.classList.remove('active');
+        settingsOverlay.classList.remove('active');
+        settingsToggle.classList.remove('active');
+      }
+
+      settingsToggle.addEventListener('click', () => {
+        settingsPanel.classList.contains('active') ? closeSettings() : openSettings();
+      });
+
+      settingsClose.addEventListener('click', closeSettings);
+      settingsOverlay.addEventListener('click', closeSettings);
+
+      // Dark / Light mode toggle
+      function setDarkMode(isDark) {
+        if (isDark) {
+          document.body.classList.add('dark-mode');
+          themeToggle.checked = true;
+          themeModeLabel.textContent = 'Dark Mode';
+        } else {
+          document.body.classList.remove('dark-mode');
+          themeToggle.checked = false;
+          themeModeLabel.textContent = 'Light Mode';
+        }
+        localStorage.setItem('fallingOrchids-darkMode', isDark ? 'true' : 'false');
+      }
+
+      themeToggle.addEventListener('change', () => setDarkMode(themeToggle.checked));
+
+      // Restore saved preference — default to dark mode
+      const savedTheme = localStorage.getItem('fallingOrchids-darkMode');
+      if (savedTheme === 'false') {
+        setDarkMode(false);
+      } else {
+        setDarkMode(true);
+      }
+
+      // Close panel on Escape
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && settingsPanel.classList.contains('active')) {
+          closeSettings();
+        }
+      });
+    })();
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "falling-orchids",
+  "version": "1.0.0",
+  "description": "Falling Orchids – Premium Decoration Services Website",
+  "private": true,
+  "scripts": {
+    "dev": "npx -y serve \"Decoration Website\" -l 3000 --no-clipboard",
+    "start": "npx -y serve \"Decoration Website\" -l 3000 --no-clipboard"
+  }
+}
