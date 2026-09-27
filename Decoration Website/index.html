@@ -2192,12 +2192,12 @@
       // Clear legacy storage key from old sessions that might have saved false
       try {
         localStorage.removeItem('fallingOrchids-darkMode');
-      } catch (e) {}
+      } catch (e) { }
 
       var saved = null;
       try {
         saved = localStorage.getItem('fallingOrchids_theme');
-      } catch (e) {}
+      } catch (e) { }
 
       if (saved === 'light') {
         // User explicitly chose light mode — remove dark-mode from body once ready
@@ -2351,10 +2351,10 @@
       </div>
       <div class="card">
         <div class="card-img">
-          <img src="assets.png/chalpro.jpeg" alt="Chanchal Singh" loading="lazy" decoding="async">
+          <img src="assets.png/chalpro.jpeg" alt="Chanchal" loading="lazy" decoding="async">
         </div>
         <div class="card-info">
-          <h3>Chanchal Singh</h3>
+          <h3>Chanchal</h3>
           <div class="card-role">✨ Ambiance Specialist</div>
           <p>Specialist in lighting design and ambient styling. Brings the perfect mood and glow to every celebration.
           </p>
@@ -3038,12 +3038,12 @@ ${name} (${userEmail})`;
           document.body.classList.add('dark-mode');
           themeToggle.checked = true;
           themeModeLabel.textContent = 'Dark Mode';
-          try { localStorage.setItem('fallingOrchids_theme', 'dark'); } catch (e) {}
+          try { localStorage.setItem('fallingOrchids_theme', 'dark'); } catch (e) { }
         } else {
           document.body.classList.remove('dark-mode');
           themeToggle.checked = false;
           themeModeLabel.textContent = 'Light Mode';
-          try { localStorage.setItem('fallingOrchids_theme', 'light'); } catch (e) {}
+          try { localStorage.setItem('fallingOrchids_theme', 'light'); } catch (e) { }
         }
       }
 
@@ -3053,7 +3053,7 @@ ${name} (${userEmail})`;
       var savedTheme = null;
       try {
         savedTheme = localStorage.getItem('fallingOrchids_theme');
-      } catch (e) {}
+      } catch (e) { }
 
       if (savedTheme === 'light') {
         setDarkMode(false);
