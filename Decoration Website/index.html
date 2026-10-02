@@ -387,11 +387,11 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 12px 20px;
-      border-radius: 50px;
+      width: 55px;
+      height: 55px;
+      padding: 0;
+      border-radius: 55px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
       font-weight: 600;
       letter-spacing: 0.3px;
       color: white;
@@ -400,7 +400,56 @@
       cursor: pointer;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+    }
+
+    .floating-btn i {
+      font-size: 1.4rem;
+    }
+
+    .floating-btn .btn-text {
+      position: absolute;
+      right: 70px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
       white-space: nowrap;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .floating-btn .btn-text::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -5px;
+      transform: translateY(-50%);
+      border-width: 5px 0 5px 6px;
+      border-style: solid;
+      border-color: transparent transparent transparent rgba(0, 0, 0, 0.75);
+    }
+
+    @media (hover: hover) {
+      .floating-btn:hover {
+        transform: translateY(-2px);
+      }
+      .floating-btn.book-btn:hover {
+        box-shadow: 0 6px 22px rgba(231, 84, 128, 0.55);
+      }
+      .floating-btn.whatsapp-btn:hover {
+        box-shadow: 0 6px 22px rgba(37, 211, 102, 0.5);
+      }
+      .floating-btn:hover .btn-text {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     .floating-btn.book-btn {
@@ -408,19 +457,9 @@
       box-shadow: 0 4px 14px rgba(231, 84, 128, 0.4);
     }
 
-    .floating-btn.book-btn:hover {
-      transform: scale(1.06) translateY(-2px);
-      box-shadow: 0 6px 22px rgba(231, 84, 128, 0.55);
-    }
-
     .floating-btn.whatsapp-btn {
       background: #25D366;
       box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
-    }
-
-    .floating-btn.whatsapp-btn:hover {
-      transform: scale(1.06) translateY(-2px);
-      box-shadow: 0 6px 22px rgba(37, 211, 102, 0.5);
     }
 
     .floating-btn:active {
@@ -1319,25 +1358,30 @@
        ══════════════════════════════════════════════════════════════ */
     .mobile-nav-toggle {
       display: none;
-      background: rgba(255, 255, 255, 0.18);
-      border: 1.5px solid rgba(255, 255, 255, 0.32);
-      border-radius: 10px;
-      width: 38px;
-      height: 38px;
+      background: none;
+      border: none;
+      border-radius: 0;
+      width: 28px;
+      height: 28px;
       cursor: pointer;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 5px;
-      padding: 8px;
+      gap: 4px;
+      padding: 4px;
       transition: all 0.3s ease;
-      backdrop-filter: blur(4px);
+      flex-shrink: 0;
+    }
+
+    .mobile-nav-toggle:hover {
+      transform: scale(1.1);
+      opacity: 0.85;
     }
 
     .mobile-nav-toggle span {
       display: block;
-      width: 18px;
-      height: 2px;
+      width: 16px;
+      height: 1.5px;
       background: white;
       border-radius: 2px;
       transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
@@ -1459,6 +1503,67 @@
       font-size: 0.9rem;
     }
 
+    /* Mobile theme toggle in drawer */
+    .mobile-theme-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: none;
+      border: none;
+      width: 100%;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #555;
+    }
+
+    .mobile-theme-toggle:hover {
+      background: rgba(231, 84, 128, 0.08);
+      color: #e75480;
+    }
+
+    .mobile-theme-toggle .theme-label-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mobile-theme-toggle .theme-label-group i {
+      width: 20px;
+      text-align: center;
+      color: #e75480;
+      font-size: 0.9rem;
+    }
+
+    .mobile-theme-indicator {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #999;
+      background: rgba(231, 84, 128, 0.08);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    body.dark-mode .mobile-theme-toggle {
+      color: #d1d5db;
+    }
+
+    body.dark-mode .mobile-theme-toggle:hover {
+      background: rgba(231, 84, 128, 0.15);
+      color: #f48fb1;
+    }
+
+    body.dark-mode .mobile-theme-indicator {
+      background: rgba(231, 84, 128, 0.15);
+      color: #f48fb1;
+    }
+
     /* ══════════════════════════════════════════════════════════════
        SOCIAL ICONS (shared by contact + footer)
        ══════════════════════════════════════════════════════════════ */
@@ -1554,6 +1659,10 @@
         display: none;
       }
 
+      .nav-theme-toggle {
+        display: none;
+      }
+
       .mobile-nav-toggle {
         display: flex;
       }
@@ -1563,26 +1672,49 @@
       }
 
       #home {
-        height: 70vh;
+        height: 60vh;
+        min-height: 320px;
         margin: 10px 8px 0;
+        border-radius: 20px;
+        padding-bottom: 40px;
+      }
+
+      .carousel img {
+        object-position: center center;
+      }
+
+      .carousel-arrows {
+        padding: 0 12px;
+      }
+
+      .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
       }
 
       .home-text {
         flex-direction: column;
-        border-radius: 24px;
-        padding: 1.2rem 1.6rem;
-        max-width: 90%;
+        border-radius: 20px;
+        padding: 1rem 1.4rem;
+        max-width: 85%;
+        gap: 0;
       }
 
       .home-text h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
         white-space: normal;
       }
 
+      .home-text p {
+        font-size: 0.88rem;
+        line-height: 1.5;
+      }
+
       .home-divider {
-        width: 60px;
+        width: 50px;
         height: 1.5px;
-        margin: 0.8rem 0;
+        margin: 0.6rem 0;
       }
 
       .home-tagline {
@@ -1590,14 +1722,36 @@
       }
 
       .floating-actions {
-        bottom: 14px;
-        right: 14px;
-        gap: 8px;
+        bottom: 12px;
+        right: 12px;
+        gap: 6px;
       }
 
       .floating-btn {
-        padding: 10px 16px;
-        font-size: 0.88rem;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        border-radius: 48px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+      }
+
+      .floating-btn i {
+        font-size: 1.2rem;
+      }
+
+      .floating-btn .btn-text {
+        font-size: 0.75rem;
+        right: 60px;
+      }
+
+
+
+      section {
+        padding: 2.5rem 1rem;
+      }
+
+      section h2 {
+        font-size: 1.8rem;
       }
 
       .card {
@@ -1606,7 +1760,11 @@
 
       .card-img {
         width: 100%;
-        height: 200px;
+        height: 280px;
+      }
+
+      .card-img img {
+        object-position: top center;
       }
 
       .gallery-mosaic {
@@ -1643,238 +1801,143 @@
       }
     }
 
-    /* ══════════════════════════════════════════════════════════════
-       NAV-LEFT WRAPPER
-       ══════════════════════════════════════════════════════════════ */
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 14px;
+    /* Extra small screens (phones) */
+    @media (max-width: 480px) {
+      nav {
+        padding: 0.4rem 1rem;
+        margin: 0 8px;
+        top: 6px;
+      }
+
+      nav img {
+        height: 38px;
+      }
+
+      nav .logo {
+        font-size: 1.4rem;
+      }
+
+      #home {
+        height: 50vh;
+        min-height: 280px;
+        margin: 8px 6px 0;
+        border-radius: 16px;
+        padding-bottom: 30px;
+      }
+
+      .home-text {
+        padding: 0.8rem 1.2rem;
+        max-width: 90%;
+        border-radius: 18px;
+      }
+
+      .home-text h1 {
+        font-size: 1.5rem;
+      }
+
+      .home-text p {
+        font-size: 0.78rem;
+      }
+
+      .home-divider {
+        width: 40px;
+        margin: 0.5rem 0;
+      }
+
+      .floating-actions {
+        bottom: 10px;
+        right: 10px;
+        gap: 5px;
+      }
+
+      .floating-btn {
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border-radius: 44px;
+      }
+
+      .floating-btn i {
+        font-size: 1.1rem;
+      }
+
+      .floating-btn .btn-text {
+        font-size: 0.7rem;
+        right: 55px;
+      }
+
+      .product-card>img {
+        height: 180px;
+      }
+
+      .gallery-card {
+        aspect-ratio: 16 / 10;
+      }
+
+      .testimonial-inner {
+        padding: 1.8rem 1.2rem 1.4rem;
+      }
+
+      .testimonial-text {
+        font-size: 1rem;
+      }
     }
 
     /* ══════════════════════════════════════════════════════════════
-       SETTINGS HAMBURGER BUTTON
+       NAV THEME TOGGLE (Desktop sun/moon icon)
        ══════════════════════════════════════════════════════════════ */
-    .settings-toggle {
+    .nav-theme-toggle {
       background: none;
       border: none;
-      border-radius: 0;
-      width: 28px;
-      height: 28px;
       cursor: pointer;
+      color: white;
+      font-size: 1.15rem;
+      padding: 0;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 4px;
-      padding: 4px;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-    }
-
-    .settings-toggle:hover {
-      background: none;
-      transform: scale(1.1);
-      opacity: 0.85;
-    }
-
-    .settings-toggle span {
-      display: block;
-      width: 16px;
-      height: 1.5px;
-      background: white;
-      border-radius: 2px;
-      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-      transform-origin: center;
-    }
-
-    .settings-toggle.active span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .settings-toggle.active span:nth-child(2) {
-      opacity: 0;
-      transform: scaleX(0);
-    }
-
-    .settings-toggle.active span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    /* ══════════════════════════════════════════════════════════════
-       SETTINGS PANEL (Slide-in Sidebar)
-       ══════════════════════════════════════════════════════════════ */
-    .settings-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
-      z-index: 1998;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.35s ease;
-      backdrop-filter: blur(3px);
-    }
-
-    .settings-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .settings-panel {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 300px;
-      height: 100vh;
-      background: rgba(255, 255, 255, 0.97);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      z-index: 1999;
-      transform: translateX(-100%);
-      transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
-      box-shadow: 4px 0 30px rgba(0, 0, 0, 0.12);
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-    }
-
-    .settings-panel.active {
-      transform: translateX(0);
-    }
-
-    .settings-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 1.5rem 1.2rem;
-      border-bottom: 1.5px solid rgba(231, 84, 128, 0.15);
-    }
-
-    .settings-header h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #c2185b;
-      margin: 0;
-    }
-
-    .settings-close {
-      background: none;
-      border: none;
-      font-size: 1.8rem;
-      color: #999;
-      cursor: pointer;
-      transition: color 0.25s, transform 0.3s;
-      line-height: 1;
-      padding: 4px;
-    }
-
-    .settings-close:hover {
-      color: #e75480;
-      transform: rotate(90deg);
-    }
-
-    .settings-content {
-      padding: 1.8rem 1.5rem;
-      flex: 1;
-    }
-
-    .settings-group {
-      margin-bottom: 2rem;
-    }
-
-    .settings-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: #b0427a;
-      display: block;
-      margin-bottom: 1rem;
-    }
-
-    .theme-toggle-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px 20px;
-      background: rgba(231, 84, 128, 0.05);
-      border-radius: 14px;
-      border: 1.5px solid rgba(231, 84, 128, 0.12);
-      transition: all 0.3s ease;
-    }
-
-    .theme-toggle-wrapper i {
-      font-size: 1.15rem;
-      transition: all 0.4s ease;
-    }
-
-    .theme-toggle-wrapper .fa-sun {
-      color: #f5a623;
-    }
-
-    .theme-toggle-wrapper .fa-moon {
-      color: #8b8bc7;
-    }
-
-    /* Toggle Switch */
-    .theme-switch {
+      transition: transform 0.3s ease;
       position: relative;
-      width: 54px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       flex-shrink: 0;
     }
 
-    .theme-switch input {
+    .nav-theme-toggle:hover {
+      transform: scale(1.2) rotate(15deg);
+    }
+
+    .nav-theme-toggle .fa-sun,
+    .nav-theme-toggle .fa-moon {
+      position: absolute;
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.68, -0.15, 0.27, 1.15);
+    }
+
+    .nav-theme-toggle .fa-sun {
       opacity: 0;
-      width: 0;
-      height: 0;
-      position: absolute;
+      transform: rotate(-90deg) scale(0.5);
     }
 
-    .theme-slider {
-      position: absolute;
-      cursor: pointer;
-      inset: 0;
-      background: linear-gradient(135deg, #ffecd2, #fcb69f);
-      border-radius: 28px;
-      transition: all 0.5s cubic-bezier(0.68, -0.15, 0.27, 1.15);
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    .nav-theme-toggle .fa-moon {
+      opacity: 1;
+      transform: rotate(0) scale(1);
     }
 
-    .theme-slider::before {
-      content: '';
-      position: absolute;
-      height: 22px;
-      width: 22px;
-      left: 3px;
-      bottom: 3px;
-      background: white;
-      border-radius: 50%;
-      transition: all 0.5s cubic-bezier(0.68, -0.15, 0.27, 1.15);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+    body:not(.dark-mode) .nav-theme-toggle .fa-sun {
+      opacity: 1;
+      transform: rotate(0) scale(1);
+      color: #fff5c0;
+      filter: drop-shadow(0 0 4px rgba(245, 166, 35, 0.5));
     }
 
-    .theme-switch input:checked+.theme-slider {
-      background: linear-gradient(135deg, #2d1b69, #0f3443);
+    body:not(.dark-mode) .nav-theme-toggle .fa-moon {
+      opacity: 0;
+      transform: rotate(90deg) scale(0.5);
     }
 
-    .theme-switch input:checked+.theme-slider::before {
-      transform: translateX(26px);
-      background: #1a1a2e;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35),
-        inset -3px -1px 0 0 #d4d4d4,
-        inset -5px 0 0 0 #aaa;
-    }
-
-    .theme-mode-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.82rem;
-      color: #999;
-      text-align: center;
-      margin-top: 0.8rem;
-      transition: color 0.3s;
+    body.dark-mode .nav-theme-toggle .fa-moon {
+      color: #ccc8ff;
+      filter: drop-shadow(0 0 4px rgba(139, 139, 199, 0.5));
     }
 
     /* ══════════════════════════════════════════════════════════════
@@ -2124,40 +2187,6 @@
       fill: #16213e;
     }
 
-    body.dark-mode .settings-panel {
-      background: rgba(22, 20, 50, 0.97);
-      box-shadow: 4px 0 30px rgba(0, 0, 0, 0.4);
-    }
-
-    body.dark-mode .settings-header {
-      border-color: rgba(231, 84, 128, 0.18);
-    }
-
-    body.dark-mode .settings-header h3 {
-      color: #f48fb1;
-    }
-
-    body.dark-mode .settings-close {
-      color: #666;
-    }
-
-    body.dark-mode .settings-close:hover {
-      color: #f48fb1;
-    }
-
-    body.dark-mode .settings-label {
-      color: #f48fb1;
-    }
-
-    body.dark-mode .theme-toggle-wrapper {
-      background: rgba(231, 84, 128, 0.06);
-      border-color: rgba(231, 84, 128, 0.15);
-    }
-
-    body.dark-mode .theme-mode-label {
-      color: #777;
-    }
-
     body.dark-mode .floating-btn {
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
     }
@@ -2168,21 +2197,6 @@
 
     body.dark-mode #about>p {
       color: #b0b0b0;
-    }
-
-    @media (max-width: 768px) {
-      .settings-panel {
-        width: 280px;
-      }
-
-      .settings-toggle {
-        width: 34px;
-        height: 34px;
-      }
-
-      .settings-toggle span {
-        width: 16px;
-      }
     }
   </style>
 
@@ -2216,16 +2230,9 @@
 
   <!-- Navbar -->
   <nav>
-    <div class="nav-left">
-      <button class="settings-toggle" id="settings-toggle" aria-label="Open Settings">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <div class="logo">
-        <img src="assets.png/logo.png" alt="Logo" style="border-radius: 50%;">
-        Falling Orchids
-      </div>
+    <div class="logo">
+      <img src="assets/logo.png" alt="Logo" style="border-radius: 50%;">
+      Falling Orchids
     </div>
     <ul>
       <li><a href="#home">Home</a></li>
@@ -2233,6 +2240,12 @@
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li>
+        <button class="nav-theme-toggle" id="nav-theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="fas fa-sun"></i>
+          <i class="fas fa-moon"></i>
+        </button>
+      </li>
     </ul>
     <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Open Menu">
       <span></span>
@@ -2253,42 +2266,29 @@
       <li><a href="#about"><i class="fas fa-users"></i> About</a></li>
       <li><a href="#gallery"><i class="fas fa-images"></i> Gallery</a></li>
       <li><a href="#testimonials"><i class="fas fa-star"></i> Testimonials</a></li>
-      <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i> Book Appointment</a></li>
+      <li>
+        <button class="mobile-theme-toggle" id="mobile-theme-toggle" aria-label="Toggle Theme">
+          <span class="theme-label-group">
+            <i class="fas fa-moon"></i>
+            <span>Dark Mode</span>
+          </span>
+          <span class="mobile-theme-indicator" id="mobile-theme-indicator">ON</span>
+        </button>
+      </li>
     </ul>
   </div>
 
-  <!-- Settings Panel -->
-  <div class="settings-overlay" id="settings-overlay"></div>
-  <div class="settings-panel" id="settings-panel">
-    <div class="settings-header">
-      <h3>⚙ Settings</h3>
-      <button class="settings-close" id="settings-close" aria-label="Close Settings">&times;</button>
-    </div>
-    <div class="settings-content">
-      <div class="settings-group">
-        <span class="settings-label">Appearance</span>
-        <div class="theme-toggle-wrapper">
-          <i class="fas fa-sun"></i>
-          <label class="theme-switch">
-            <input type="checkbox" id="theme-toggle" checked>
-            <span class="theme-slider"></span>
-          </label>
-          <i class="fas fa-moon"></i>
-        </div>
-        <p class="theme-mode-label" id="theme-mode-label">Dark Mode</p>
-      </div>
-    </div>
-  </div>
 
   <!-- Home -->
   <section id="home">
     <div class="carousel">
-      <img src="assets.png/1.jpg" class="active" alt="Decoration 1" fetchpriority="high" decoding="async">
-      <img src="assets.png/2.jpg" alt="Decoration 2" decoding="async">
-      <img src="assets.png/3.jpg" alt="Decoration 3" decoding="async">
-      <img src="assets.png/4.jpg" alt="Decoration 4" decoding="async">
-      <img src="assets.png/6.jpg" alt="Decoration 5" decoding="async">
-      <img src="assets.png/10.jpg" alt="Decoration 6" decoding="async">
+      <img src="assets/1.jpg" class="active" alt="Decoration 1" fetchpriority="high" decoding="async">
+      <img src="assets/2.jpg" alt="Decoration 2" decoding="async">
+      <img src="assets/3.jpg" alt="Decoration 3" decoding="async">
+      <img src="assets/4.jpg" alt="Decoration 4" decoding="async">
+      <img src="assets/6.jpg" alt="Decoration 5" decoding="async">
+      <img src="assets/10.jpg" alt="Decoration 6" decoding="async">
       <div class="carousel-overlay"></div>
       <div class="carousel-arrows">
         <button class="carousel-arrow prev" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
@@ -2325,11 +2325,11 @@
   <!-- Floating Action Buttons (Bottom-Right) -->
   <div class="floating-actions">
     <a href="#contact" class="floating-btn book-btn" title="Book Appointment">
-      <i class="fas fa-calendar-check"></i> Book Appointment
+      <i class="fas fa-calendar-check"></i> <span class="btn-text">Book Appointment</span>
     </a>
     <a href="https://wa.me/918826059605" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp-btn"
       title="Contact Us on WhatsApp">
-      <i class="fab fa-whatsapp"></i> Contact Us
+      <i class="fab fa-whatsapp"></i> <span class="btn-text">Contact Us</span>
     </a>
   </div>
 
@@ -2340,7 +2340,8 @@
     <div class="about-cards">
       <div class="card">
         <div class="card-img">
-          <img src="assets.png/sarabpro.jpeg" alt="Sarbjeet Singh" loading="lazy" decoding="async">
+          <img src="assets/sarabpro.jpeg" alt="Sarbjeet Singh" loading="lazy" decoding="async"
+            style="object-position: center 20%;">
         </div>
         <div class="card-info">
           <h3>Sarbjeet Singh</h3>
@@ -2351,7 +2352,7 @@
       </div>
       <div class="card">
         <div class="card-img">
-          <img src="assets.png/chalpro.jpeg" alt="Chanchal" loading="lazy" decoding="async">
+          <img src="assets/chalpro.jpeg" alt="Chanchal" loading="lazy" decoding="async">
         </div>
         <div class="card-info">
           <h3>Chanchal</h3>
@@ -2371,7 +2372,7 @@
     <div class="gallery-grid">
       <div class="product-card">
         <div class="favorite-btn"><i class="fas fa-heart"></i></div>
-        <img src="assets.png/1.jpg" alt="Pastel Birthday Decoration" loading="lazy" decoding="async">
+        <img src="assets/1.jpg" alt="Pastel Birthday Decoration" loading="lazy" decoding="async">
         <div class="product-info">
           <h3>Pastel And Rosegold Birthday</h3>
           <div class="product-badge-row">
@@ -2383,7 +2384,7 @@
 
       <div class="product-card">
         <div class="favorite-btn"><i class="fas fa-heart"></i></div>
-        <img src="assets.png/2.jpg" alt="White and Gold Birthday Setup" loading="lazy" decoding="async">
+        <img src="assets/2.jpg" alt="White and Gold Birthday Setup" loading="lazy" decoding="async">
         <div class="product-info">
           <h3>White And Gold Bliss Floral Birthday</h3>
           <div class="product-badge-row">
@@ -2395,7 +2396,7 @@
 
       <div class="product-card">
         <div class="favorite-btn"><i class="fas fa-heart"></i></div>
-        <img src="assets.png/3.jpg" alt="Glitzy Silver Birthday" loading="lazy" decoding="async">
+        <img src="assets/3.jpg" alt="Glitzy Silver Birthday" loading="lazy" decoding="async">
         <div class="product-info">
           <h3>Glitzy Silver and Black Birthday</h3>
           <div class="product-badge-row">
@@ -2407,7 +2408,7 @@
 
       <div class="product-card">
         <div class="favorite-btn"><i class="fas fa-heart"></i></div>
-        <img src="assets.png/4.jpg" alt="Romantic Rose Gold Setup" loading="lazy" decoding="async">
+        <img src="assets/4.jpg" alt="Romantic Rose Gold Setup" loading="lazy" decoding="async">
         <div class="product-info">
           <h3>Romantic Rose Gold Love</h3>
           <div class="product-badge-row">
@@ -2423,49 +2424,49 @@
   <section id="gallery-photos" style="padding: 2rem 1rem;">
     <h2>Our Work</h2>
     <div class="gallery-mosaic">
-      <div class="gallery-card" data-img="assets.png/1.jpg"><img src="assets.png/1.jpg" alt="Decoration 1"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/2.jpg"><img src="assets.png/2.jpg" alt="Decoration 2"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/3.jpg"><img src="assets.png/3.jpg" alt="Decoration 3"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/4.jpg"><img src="assets.png/4.jpg" alt="Decoration 4"
-          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets/1.jpg"><img src="assets/1.jpg" alt="Decoration 1" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/2.jpg"><img src="assets/2.jpg" alt="Decoration 2" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/3.jpg"><img src="assets/3.jpg" alt="Decoration 3" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/4.jpg"><img src="assets/4.jpg" alt="Decoration 4" loading="lazy"
+          decoding="async"></div>
     </div>
 
     <div class="gallery-mosaic gallery-extra" id="gallery-extra" style="margin-top: 14px;">
-      <div class="gallery-card" data-img="assets.png/5.jpg"><img src="assets.png/5.jpg" alt="Decoration 5"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/6.jpg"><img src="assets.png/6.jpg" alt="Decoration 6"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/7.jpg"><img src="assets.png/7.jpg" alt="Decoration 7"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/9.jpg"><img src="assets.png/9.jpg" alt="Decoration 8"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/10.jpg"><img src="assets.png/10.jpg" alt="Decoration 9"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/11.jpg"><img src="assets.png/11.jpg" alt="Decoration 10"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/13.jpg"><img src="assets.png/13.jpg" alt="Decoration 11"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/14.jpg"><img src="assets.png/14.jpg" alt="Decoration 12"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/15.jpg"><img src="assets.png/15.jpg" alt="Decoration 13"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/16.jpg"><img src="assets.png/16.jpg" alt="Decoration 14"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/17.jpg"><img src="assets.png/17.jpg" alt="Decoration 15"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/18.jpg"><img src="assets.png/18.jpg" alt="Decoration 16"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/20.jpg"><img src="assets.png/20.jpg" alt="Decoration 17"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/21.jpg"><img src="assets.png/21.jpg" alt="Decoration 18"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/22.jpg"><img src="assets.png/22.jpg" alt="Decoration 19"
-          loading="lazy" decoding="async"></div>
-      <div class="gallery-card" data-img="assets.png/23.jpg"><img src="assets.png/23.jpg" alt="Decoration 20"
-          loading="lazy" decoding="async"></div>
+      <div class="gallery-card" data-img="assets/5.jpg"><img src="assets/5.jpg" alt="Decoration 5" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/6.jpg"><img src="assets/6.jpg" alt="Decoration 6" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/7.jpg"><img src="assets/7.jpg" alt="Decoration 7" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/9.jpg"><img src="assets/9.jpg" alt="Decoration 8" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/10.jpg"><img src="assets/10.jpg" alt="Decoration 9" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/11.jpg"><img src="assets/11.jpg" alt="Decoration 10" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/13.jpg"><img src="assets/13.jpg" alt="Decoration 11" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/14.jpg"><img src="assets/14.jpg" alt="Decoration 12" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/15.jpg"><img src="assets/15.jpg" alt="Decoration 13" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/16.jpg"><img src="assets/16.jpg" alt="Decoration 14" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/17.jpg"><img src="assets/17.jpg" alt="Decoration 15" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/18.jpg"><img src="assets/18.jpg" alt="Decoration 16" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/20.jpg"><img src="assets/20.jpg" alt="Decoration 17" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/21.jpg"><img src="assets/21.jpg" alt="Decoration 18" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/22.jpg"><img src="assets/22.jpg" alt="Decoration 19" loading="lazy"
+          decoding="async"></div>
+      <div class="gallery-card" data-img="assets/23.jpg"><img src="assets/23.jpg" alt="Decoration 20" loading="lazy"
+          decoding="async"></div>
     </div>
 
     <button id="gallery-toggle" class="gallery-toggle-btn">View More ↓</button>
@@ -3002,71 +3003,45 @@ ${name} (${userEmail})`;
       });
     })();
 
-    // ── Settings Panel & Dark Mode ──────────────────────────────
+    // ── Dark Mode Toggle ──────────────────────────────────────────
     (function () {
-      const settingsToggle = document.getElementById('settings-toggle');
-      const settingsPanel = document.getElementById('settings-panel');
-      const settingsOverlay = document.getElementById('settings-overlay');
-      const settingsClose = document.getElementById('settings-close');
-      const themeToggle = document.getElementById('theme-toggle');
-      const themeModeLabel = document.getElementById('theme-mode-label');
+      var navToggle = document.getElementById('nav-theme-toggle');
+      var mobileToggle = document.getElementById('mobile-theme-toggle');
+      var mobileIndicator = document.getElementById('mobile-theme-indicator');
+      var mobileIcon = mobileToggle ? mobileToggle.querySelector('.theme-label-group i') : null;
 
-      function openSettings() {
-        settingsPanel.classList.add('active');
-        settingsOverlay.classList.add('active');
-        settingsToggle.classList.add('active');
+      function updateUI(isDark) {
+        if (mobileIndicator) mobileIndicator.textContent = isDark ? 'ON' : 'OFF';
+        if (mobileIcon) mobileIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
       }
 
-      function closeSettings() {
-        settingsPanel.classList.remove('active');
-        settingsOverlay.classList.remove('active');
-        settingsToggle.classList.remove('active');
-      }
-
-      settingsToggle.addEventListener('click', () => {
-        settingsPanel.classList.contains('active') ? closeSettings() : openSettings();
-      });
-
-      settingsClose.addEventListener('click', closeSettings);
-      settingsOverlay.addEventListener('click', closeSettings);
-
-      // Dark / Light mode toggle
       function setDarkMode(isDark) {
-        // Clear the temporary html background set by the head script
         document.documentElement.style.background = '';
         if (isDark) {
           document.body.classList.add('dark-mode');
-          themeToggle.checked = true;
-          themeModeLabel.textContent = 'Dark Mode';
           try { localStorage.setItem('fallingOrchids_theme', 'dark'); } catch (e) { }
         } else {
           document.body.classList.remove('dark-mode');
-          themeToggle.checked = false;
-          themeModeLabel.textContent = 'Light Mode';
           try { localStorage.setItem('fallingOrchids_theme', 'light'); } catch (e) { }
         }
+        updateUI(isDark);
       }
 
-      themeToggle.addEventListener('change', () => setDarkMode(themeToggle.checked));
+      function toggleTheme() {
+        setDarkMode(!document.body.classList.contains('dark-mode'));
+      }
+
+      if (navToggle) navToggle.addEventListener('click', toggleTheme);
+      if (mobileToggle) mobileToggle.addEventListener('click', toggleTheme);
 
       // Restore saved preference — default to dark mode
       var savedTheme = null;
-      try {
-        savedTheme = localStorage.getItem('fallingOrchids_theme');
-      } catch (e) { }
-
+      try { savedTheme = localStorage.getItem('fallingOrchids_theme'); } catch (e) { }
       if (savedTheme === 'light') {
         setDarkMode(false);
       } else {
         setDarkMode(true);
       }
-
-      // Close panel on Escape
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && settingsPanel.classList.contains('active')) {
-          closeSettings();
-        }
-      });
     })();
   </script>
 
